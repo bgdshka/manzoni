@@ -55,8 +55,10 @@ export default function tickets(
     case GENERATE_WIN_COMBINATIONS:
       return {
         ...state,
-        isFetching: false,
-        error: action.error,
+        winCombination: {
+          firstCells: uniqueRandomIntArrayInRange(1, 19, 8),
+          secondCells: uniqueRandomIntArrayInRange(1, 2, 1),
+        },
       };
 
     default:

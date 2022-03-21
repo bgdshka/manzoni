@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCell, sendTicketInfo } from '../../actions/tickets';
+import { generateWinCombinations, selectCell, sendTicketInfo } from '../../actions/tickets';
 import { MAX_FIRST_CELLS_SELECTED, MAX_SECOND_CELLS_SELECTED } from '../../constants';
 import Cell from '../Cell';
 import Loader from '../Loader';
@@ -18,6 +18,8 @@ export default function Ticket({ ticketNumber }) {
     ({ number, field, selected }) => dispatch(selectCell({ number, field, selected })),
     [dispatch],
   );
+
+  const handleWandClick = () => dispatch(generateWinCombinations());
 
   const handleShowResult = () => dispatch(sendTicketInfo());
 
@@ -53,11 +55,11 @@ export default function Ticket({ ticketNumber }) {
     <section className="Ticket">
       <div className="Ticket__header">
         <div className="Ticket__title">
-          Билет
+          Билет&nbsp;
           {ticketNumber}
         </div>
         <div className="Ticket__wand">
-          <img alt="magic_wand" src={magicWand} />
+          <img alt="magic_wand" src={magicWand} onClick={handleWandClick} />
         </div>
       </div>
       <div className="Ticket__firstFieldTitle">
