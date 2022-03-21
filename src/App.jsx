@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <ToastContainer autoClose={2000} />
       <div className="App__ticketsContainer">
-        <Ticket />
+        <Ticket ticketNumber="1" />
       </div>
     </div>
   );

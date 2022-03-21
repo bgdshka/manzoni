@@ -9,7 +9,7 @@ export function selectCell({ number, field, selected }) {
   };
 }
 
-export function sendTicketInfo(ticket) {
+export function sendTicketInfo() {
   return {
     type: types.SEND_TICKET_INFO,
   };

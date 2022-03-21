@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCell, sendTicketInfo } from '../../actions/tickets';
 import { MAX_FIRST_CELLS_SELECTED, MAX_SECOND_CELLS_SELECTED } from '../../constants';
 import Cell from '../Cell';
+import Loader from '../Loader';
 import magicWand from './assets/magic-wand.svg';
 import './Ticket.scss';
 
-export default function Ticket() {
+export default function Ticket({ ticketNumber }) {
   const dispatch = useDispatch();
-  const { firstCells, secondCells } = useSelector((state) => state.tickets.ticket);
+  const {
+    isFetching,
+    ticket: { firstCells, secondCells },
+  } = useSelector((state) => state.tickets);
 
   const handleCellClick = useCallback(
     ({ number, field, selected }) => dispatch(selectCell({ number, field, selected })),
@@ -48,7 +52,10 @@ export default function Ticket() {
   return (
     <section className="Ticket">
       <div className="Ticket__header">
-        <div className="Ticket__title">Билет 1</div>
+        <div className="Ticket__title">
+          Билет
+          {ticketNumber}
+        </div>
         <div className="Ticket__wand">
           <img alt="magic_wand" src={magicWand} />
         </div>
@@ -66,6 +73,7 @@ export default function Ticket() {
       <div className="Ticket__cellContainer">{mappedSecondCells}</div>
 
       <button type="button" className="Ticket__button" onClick={handleShowResult}>
+        {isFetching && <Loader />}
         Показать результат
       </button>
     </section>
