@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+  background: #4568dc; /* Old browsers */
+  background: -moz-linear-gradient(top, #4568dc 0%, #b06ab3 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #4568dc 0%, #b06ab3 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #4568dc 0%,
+    #b06ab3 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4568dc', endColorstr='#b06ab3',GradientType=0 );
+  
+  &__ticketsContainer {
+    padding: 20px;
+  }
+}
