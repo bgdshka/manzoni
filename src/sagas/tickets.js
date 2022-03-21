@@ -42,6 +42,6 @@ export function* sendTicketInfo() {
   }
 }
 
-export default function* watchOrders() {
+export default function* watchTickets() {
   yield takeEvery(types.SEND_TICKET_INFO, sendTicketInfo);
 }
