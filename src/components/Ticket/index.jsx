@@ -21,6 +21,12 @@ export default function Ticket({ ticketNumber }) {
 
   const handleWandClick = () => dispatch(generateWinCombinations());
 
+  const handleWandKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleWandClick();
+    }
+  };
+
   const handleShowResult = () => dispatch(sendTicketInfo());
 
   const firstCellsMaxSelectedReached =
@@ -58,8 +64,14 @@ export default function Ticket({ ticketNumber }) {
           Билет&nbsp;
           {ticketNumber}
         </div>
-        <div className="Ticket__wand">
-          <img alt="magic_wand" src={magicWand} onClick={handleWandClick} />
+        <div
+          className="Ticket__wand"
+          role="button"
+          tabIndex={0}
+          onClick={handleWandClick}
+          onKeyDown={handleWandKeyPress}
+        >
+          <img alt="magic_wand" src={magicWand} />
         </div>
       </div>
       <div className="Ticket__firstFieldTitle">
