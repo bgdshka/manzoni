@@ -16,7 +16,7 @@ describe('saga sendTicketInfo', () => {
     const dispatched = [];
     const stateMock = { tickets: ticketInitialState };
 
-    const result = await runSaga(
+    await runSaga(
       {
         dispatch: (action) => dispatched.push(action),
         getState: () => stateMock,
@@ -39,7 +39,7 @@ describe('saga sendTicketInfo', () => {
     const dispatched = [];
     const stateMock = { tickets: ticketInitialState };
 
-    const result = await runSaga(
+    await runSaga(
       {
         dispatch: (action) => dispatched.push(action),
         getState: () => stateMock,
