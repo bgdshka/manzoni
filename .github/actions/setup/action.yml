@@ -1,0 +1,19 @@
+name: 'Setup infra'
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Cloning repository
+      uses: actions/checkout@v2
+
+    - name: Installing node
+      uses: actions/setup-node@v2
+
+    - name: Installing yarn
+      shell: bash
+      run: npm install -g yarn
+    
+    - name: Installing npm packages
+      shell: bash
+      run: yarn install

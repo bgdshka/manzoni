@@ -1,0 +1,10 @@
+name: 'Run testing'
+description: 'Running unit tests'
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Running tests
+      shell: bash
+      run: yarn test
