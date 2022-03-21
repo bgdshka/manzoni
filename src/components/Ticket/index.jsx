@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCell } from '../../actions/tickets';
+import { selectCell, sendTicketInfo } from '../../actions/tickets';
 import { MAX_FIRST_CELLS_SELECTED, MAX_SECOND_CELLS_SELECTED } from '../../constants';
 import Cell from '../Cell';
 import magicWand from './assets/magic-wand.svg';
@@ -11,9 +11,11 @@ export default function Ticket() {
   const { firstCells, secondCells } = useSelector((state) => state.tickets.ticket);
 
   const handleCellClick = useCallback(
-    ({ number, area, selected }) => dispatch(selectCell({ number, area, selected })),
+    ({ number, field, selected }) => dispatch(selectCell({ number, field, selected })),
     [dispatch],
   );
+
+  const handleShowResult = () => dispatch(sendTicketInfo());
 
   const firstCellsMaxSelectedReached =
     firstCells.filter((cell) => cell.selected).length === MAX_FIRST_CELLS_SELECTED;
@@ -24,7 +26,7 @@ export default function Ticket() {
   const mappedFirstCells = firstCells.map(({ number, selected }) => (
     <Cell
       key={number}
-      area="firstCells"
+      field="firstCells"
       number={number}
       selected={selected}
       maxSelected={firstCellsMaxSelectedReached}
@@ -35,7 +37,7 @@ export default function Ticket() {
   const mappedSecondCells = secondCells.map(({ number, selected }) => (
     <Cell
       key={number}
-      area="secondCells"
+      field="secondCells"
       number={number}
       selected={selected}
       maxSelected={secondCellsMaxSelectedReached}
@@ -51,19 +53,19 @@ export default function Ticket() {
           <img alt="magic_wand" src={magicWand} />
         </div>
       </div>
-      <div className="Ticket__firstAreaTitle">
+      <div className="Ticket__firstFieldTitle">
         <span className="highlight">Поле 1 </span>
         Отметьте 8 чисел.
       </div>
       <div className="Ticket__cellContainer">{mappedFirstCells}</div>
 
-      <div className="Ticket__secondAreaTitle">
+      <div className="Ticket__secondFieldTitle">
         <span className="highlight">Поле 2 </span>
         Отметьте 1 число.
       </div>
       <div className="Ticket__cellContainer">{mappedSecondCells}</div>
 
-      <button type="button" className="Ticket__button">
+      <button type="button" className="Ticket__button" onClick={handleShowResult}>
         Показать результат
       </button>
     </section>

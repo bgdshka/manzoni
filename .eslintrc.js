@@ -21,6 +21,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'object-curly-newline': 'off',
         'operator-linebreak': 'off',
+        'function-paren-newline': 'off',
       },
     },
   ],

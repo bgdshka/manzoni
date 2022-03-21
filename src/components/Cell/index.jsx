@@ -2,16 +2,16 @@ import classNames from 'classnames';
 import React from 'react';
 import './Cell.scss';
 
-export default function Cell({ number, area, selected, onSelect, maxSelected }) {
+export default function Cell({ number, field, selected, onSelect, maxSelected }) {
   const handleEnterKeyPress = (event) => {
     if (event.key === 'Enter' && (!maxSelected || selected)) {
-      onSelect({ number, area, selected: !selected });
+      onSelect({ number, field, selected: !selected });
     }
   };
 
   const handleOnClick = () => {
     if (!maxSelected || selected) {
-      onSelect({ number, area, selected: !selected });
+      onSelect({ number, field, selected: !selected });
     }
   };
 
