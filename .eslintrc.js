@@ -15,9 +15,12 @@ module.exports = {
   rules: {},
   overrides: [
     {
-      files: ['*.jsx'],
+      files: ['*.jsx', '*.js'],
       rules: {
         'react/prop-types': 'off',
+        'import/prefer-default-export': 'off',
+        'object-curly-newline': 'off',
+        'operator-linebreak': 'off',
       },
     },
   ],
