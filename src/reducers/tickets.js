@@ -7,18 +7,17 @@ import {
 } from '../constants/actionTypes';
 import { getInitialCellsArray, uniqueRandomIntArrayInRange } from '../functions/array';
 
-export default function tickets(
-  state = {
-    ticket: { firstCells: getInitialCellsArray(19), secondCells: getInitialCellsArray(2) },
-    winCombination: {
-      firstCells: uniqueRandomIntArrayInRange(1, 19, 8),
-      secondCells: uniqueRandomIntArrayInRange(1, 2, 1),
-    },
-    isSending: false,
-    errors: null,
+export const ticketInitialState = {
+  ticket: { firstCells: getInitialCellsArray(19), secondCells: getInitialCellsArray(2) },
+  winCombination: {
+    firstCells: uniqueRandomIntArrayInRange(1, 19, 8),
+    secondCells: uniqueRandomIntArrayInRange(1, 2, 1),
   },
-  action = {},
-) {
+  isSending: false,
+  errors: null,
+};
+
+export default function tickets(state = ticketInitialState, action = {}) {
   switch (action.type) {
     case SEND_TICKET_INFO:
       return {
@@ -26,10 +25,10 @@ export default function tickets(
         isFetching: true,
       };
 
+    // You can add data for the new state if needed
     case SEND_TICKET_INFO_SUCCESS:
       return {
         ...state,
-        orders: action.payload,
         isFetching: false,
       };
 

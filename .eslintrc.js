@@ -24,5 +24,13 @@ module.exports = {
         'function-paren-newline': 'off',
       },
     },
+    {
+      files: ['*.spec.js', '*.test.js', 'react/react-in-jsx-scope'],
+      rules: {
+        'no-undef': 'off',
+        'react/jsx-filename-extension': 'off',
+        'react/react-in-jsx-scope': 'off',
+      },
+    },
   ],
 };
