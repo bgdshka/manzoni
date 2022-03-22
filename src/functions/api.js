@@ -13,7 +13,7 @@ export async function callApiWithRetry(url, options = {}, numRetries = 2, delayT
     throw new Error();
   } catch (e) {
     if (numRetries > 0) {
-      await delay(2000);
+      await delay(delayTime);
       return callApiWithRetry(url, options, numRetries - 1, delayTime);
     }
     throw new Error(e);
