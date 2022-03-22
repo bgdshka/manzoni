@@ -10,5 +10,5 @@
   "testRegex": ".*/tests/.*\\.spec\\.js$",
   "coverageReporters": ["json", "html"],
   "coverageDirectory": "<rootDir>/coverage/",
-  "collectCoverageFrom": ["src/**/*.js", "!src/components/**", "!src/test/**"]
+  "collectCoverageFrom": ["src/**/*.js", "!src/components/**", "!src/tests/**"]
 }
